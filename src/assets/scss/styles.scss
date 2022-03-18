@@ -1,0 +1,61 @@
+/* COLORS */
+:root {
+  --background: #f3f3f3;
+  --foreground: #e2e2e2;
+  --text-dark: #343441;
+  --text-dark-muted: #34344160;
+  --text-light: #ffffff;
+  --text-light-muted: #ffffff60;
+  --primary: #0088ff;
+  --primary-muted: #0088ff60;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-family: 'Roboto', serif;
+  background-color: var(--background);
+}
+
+body {
+  color: var(--text-dark);
+  font-size: 1.6rem;
+  letter-spacing: 0.4px;
+}
+
+section {
+  max-width: 96rem;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  .logo-badge {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 0.2rem 1rem;
+    border-radius: 10px;
+  }
+}
+
+header {
+  section {
+    text-align: center;
+    padding: 2rem;
+  }
+}
+
+footer {
+  section {
+    text-align: center;
+    padding: 2rem;
+  }
+}
