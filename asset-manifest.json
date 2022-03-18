@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/meme-factory/static/css/main.b9c508fe.css",
+    "main.js": "/meme-factory/static/js/main.2cf666a6.js",
+    "index.html": "/meme-factory/index.html",
+    "main.b9c508fe.css.map": "/meme-factory/static/css/main.b9c508fe.css.map",
+    "main.2cf666a6.js.map": "/meme-factory/static/js/main.2cf666a6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9c508fe.css",
+    "static/js/main.2cf666a6.js"
+  ]
+}
