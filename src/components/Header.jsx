@@ -3,7 +3,9 @@ export default function Header() {
     <header>
       <section>
         <h1>
-          The <span class="logo-badge">Meme</span> Factory
+          <span>The</span>
+          <span className="logo-badge">Meme</span>
+          <span>Factory</span>
         </h1>
       </section>
     </header>
