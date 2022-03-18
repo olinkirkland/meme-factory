@@ -72,6 +72,9 @@ header {
 }
 
 section.factory {
+  display: flex;
+  flex-direction: column;
+
   .pick-image-prompt {
     display: block;
     text-align: center;
@@ -106,13 +109,53 @@ section.factory {
   }
 
   .selected-image {
+    align-self: center;
     margin: 2rem;
     width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 7px 29px 0px;
+    position: relative;
 
     img {
       width: 100%;
       vertical-align: bottom;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        list-style: none;
+        font-size: 3.2rem;
+        font-family: 'Impact';
+        color: white;
+        letter-spacing: 1px;
+        text-align: center;
+        -webkit-text-stroke: 1px black;
+        padding: 1rem 2rem;
+        user-select: none;
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition-property: border, background-color;
+        transition-duration: 0.3s;
+
+        background-color: #00000000;
+        border: 2px dashed transparent;
+      }
+
+      li:hover {
+        border: 2px dashed white;
+        background-color: var(--text-dark-muted);
+      }
     }
   }
 }

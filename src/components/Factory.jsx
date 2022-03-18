@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import Draggable from 'react-draggable';
 
 export default function Footer() {
+  // Content
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState([]);
+  const [captions, setCaptions] = useState([]);
 
   useEffect(() => {
     // Load images from API
@@ -14,17 +17,41 @@ export default function Footer() {
       .then((response) => response.json())
       .then((data) => {
         setImages(data.data.memes);
-        setCurrentImage(data.data.memes[0]);
+        applyCurrentImage(data.data.memes[0]);
       })
       .catch((err) => console.error(err));
   }
 
   function onClickImage(image) {
+    applyCurrentImage(image);
+  }
+
+  function applyCurrentImage(image) {
+    console.log(JSON.stringify(image));
     setCurrentImage(image);
+
+    const count = image.box_count;
+    let arr = [];
+
+    if (count == 1) arr = ['CAPTION'];
+    else if (count == 2) arr = ['TOP TEXT', 'BOTTOM TEXT'];
+    else {
+      for (let i = 0; i < image.box_count; i++) arr.push('CAPTION');
+    }
+
+    setCaptions(
+      arr.map((m) => {
+        return { text: m, coords: { x: 0, y: 0 } };
+      })
+    );
   }
 
   function onClickRandom() {
-    setCurrentImage(images[Math.floor(Math.random() * images.length)]);
+    applyCurrentImage(images[Math.floor(Math.random() * images.length)]);
+  }
+
+  function onChangeCaption(event) {
+    console.log(event);
   }
 
   return (
@@ -42,6 +69,13 @@ export default function Footer() {
       </ul>
       <div className="selected-image">
         <img src={currentImage.url} alt="" />
+        <ul className="overlay">
+          {captions.map((m, index) => (
+            <Draggable>
+              <li key={index}>{m.text}</li>
+            </Draggable>
+          ))}
+        </ul>
       </div>
     </section>
   );
