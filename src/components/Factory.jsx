@@ -26,6 +26,12 @@ export default function Footer() {
     applyCurrentImage(image);
   }
 
+  function onChangeCaption(target, index) {
+    let arr = [...captions];
+    arr[index] = target.value;
+    setCaptions(arr);
+  }
+
   function applyCurrentImage(image) {
     console.log(JSON.stringify(image));
     setCurrentImage(image);
@@ -33,25 +39,22 @@ export default function Footer() {
     const count = image.box_count;
     let arr = [];
 
-    if (count == 1) arr = ['CAPTION'];
-    else if (count == 2) arr = ['TOP TEXT', 'BOTTOM TEXT'];
+    if (count === 1) arr = ['CAPTION'];
+    else if (count === 2) arr = ['TOP TEXT', 'BOTTOM TEXT'];
     else {
       for (let i = 0; i < image.box_count; i++) arr.push('CAPTION');
     }
 
-    setCaptions(
-      arr.map((m) => {
-        return { text: m, coords: { x: 0, y: 0 } };
-      })
-    );
+    setCaptions(arr);
   }
 
   function onClickRandom() {
     applyCurrentImage(images[Math.floor(Math.random() * images.length)]);
   }
 
-  function onChangeCaption(event) {
-    console.log(event);
+  function onDrag(event) {
+    // todo save the x and y
+    console.log(event.clientX, event.clientY);
   }
 
   return (
@@ -67,12 +70,24 @@ export default function Footer() {
           </li>
         ))}
       </ul>
+      <ul className="captions-form">
+        {captions.map((m, index) => (
+          <li key={index}>
+            <label>{`Caption ${index}`}</label>
+            <input
+              type="text"
+              onChange={({ target }) => onChangeCaption(target, index)}
+            />
+          </li>
+        ))}
+      </ul>
+
       <div className="selected-image">
         <img src={currentImage.url} alt="" />
         <ul className="overlay">
           {captions.map((m, index) => (
-            <Draggable bounds="parent">
-              <li key={index}>{m.text}</li>
+            <Draggable bounds="parent" onDrag={onDrag}>
+              <li key={index}>{m}</li>
             </Draggable>
           ))}
         </ul>

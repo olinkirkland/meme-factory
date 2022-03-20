@@ -108,6 +108,29 @@ section.factory {
     }
   }
 
+  ul.captions-form {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem auto;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      input {
+        padding: 1rem 1.6rem;
+
+        border-radius: 5px;
+        width: 24rem;
+        border: 1px solid transparent;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
+        transition: all 0.3s;
+      }
+    }
+  }
+
   .selected-image {
     align-self: center;
     margin: 2rem;
