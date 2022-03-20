@@ -71,7 +71,7 @@ export default function Footer() {
         <img src={currentImage.url} alt="" />
         <ul className="overlay">
           {captions.map((m, index) => (
-            <Draggable>
+            <Draggable bounds="parent">
               <li key={index}>{m.text}</li>
             </Draggable>
           ))}
